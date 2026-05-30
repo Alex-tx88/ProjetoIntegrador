@@ -1,0 +1,11 @@
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f7fb;
+}
+
+.conteudo {
+  flex: 1;
+  overflow-y: auto;
+  min-width: 0;
+}

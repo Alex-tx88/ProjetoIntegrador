@@ -1,0 +1,84 @@
+.page { padding: 28px; max-width: 1100px; }
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.page-header h1 { font-size: 24px; color: #0d2e82; margin: 0; }
+
+.btn-nova-entrega {
+  background: linear-gradient(90deg, #5b4ff0, #6b8cff);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-nova-entrega:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(91,79,240,0.28); }
+
+.dashboard-cards {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 140px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+  border-top: 4px solid #0d2e82;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.1); }
+.card h2 { font-size: 32px; margin: 0; color: #0d2e82; }
+.card p  { font-size: 13px; color: #666; margin: 6px 0 0; }
+.card-warn { border-top-color: #f59e0b; }
+.card-warn h2 { color: #b45309; }
+.card-info { border-top-color: #3b82f6; }
+.card-info h2 { color: #1d4ed8; }
+.card-ok { border-top-color: #10b981; }
+.card-ok h2 { color: #047857; }
+
+.calendario-wrapper { margin-bottom: 22px; }
+
+.filters {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.06);
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.filters input,
+.filters select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e0e6ee;
+  flex: 1;
+  min-width: 160px;
+  outline: none;
+  transition: border-color 0.18s;
+}
+.filters input:focus,
+.filters select:focus { border-color: #0d2e82; }
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  background: #fff;
+  border: 2px dashed #e2e8f0;
+  border-radius: 14px;
+}
+.empty-state h2 { color: #1e293b; margin-bottom: 8px; }
+.empty-state p  { color: #64748b; }

@@ -1,0 +1,23 @@
+<div class="page">
+  <h1>Meu Dashboard</h1>
+
+  <div class="dashboard-cards">
+    <div class="card"><h2>{{ totalMinhas() }}</h2><p>Minhas Entregas</p></div>
+    <div class="card card-warn"><h2>{{ totalPendentes() }}</h2><p>Pendentes</p></div>
+    <div class="card card-info"><h2>{{ totalNotif() }}</h2><p>Notificadas</p></div>
+    <div class="card card-ok"><h2>{{ totalRetiradas() }}</h2><p>Retiradas</p></div>
+  </div>
+
+  <h2 class="section-title">Minhas Entregas</h2>
+
+  @if (minhasEntregas().length === 0) {
+    <div class="empty-state">
+      <h2>Nenhuma entrega para seu apartamento.</h2>
+      <p>Quando chegar uma entrega, ela aparecerá aqui.</p>
+    </div>
+  } @else {
+    @for (e of minhasEntregas(); track e.id) {
+      <app-entrega-card [entrega]="e" [modoMorador]="true" (statusChange)="handleStatusChange($event)"></app-entrega-card>
+    }
+  }
+</div>

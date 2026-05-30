@@ -1,0 +1,43 @@
+<div class="page">
+  <div class="page-header">
+    <h1>Histórico de Retiradas</h1>
+  </div>
+
+  <div class="toolbar">
+    <input class="filtro" type="text" [(ngModel)]="filtroTermo"
+      placeholder="Buscar por morador, apto ou descrição...">
+    <button class="btn-limpar" (click)="limpar()">Limpar Histórico</button>
+  </div>
+
+  <div class="historico-container">
+    @for (e of historicoFiltrado; track e.id) {
+      <div class="historico-card">
+        <div class="historico-header">
+          <div>
+            <h3>{{ e.tipo }}</h3>
+            <p class="desc">{{ e.desc }}</p>
+          </div>
+          <span class="status retirado">retirado</span>
+        </div>
+        <div class="historico-body">
+          <div class="info-item"><b>Apartamento:</b> {{ e.apto }}</div>
+          <div class="info-item"><b>Morador:</b> {{ e.morador }}</div>
+          <div class="info-item"><b>Data recebimento:</b> {{ e.data }}</div>
+          <div class="info-item"><b>Remetente:</b> {{ e.remetente }}</div>
+          <div class="info-item registrado"><b>📋 Registrado por:</b> {{ e.registradoPor }}</div>
+          @if (e.retiradoPor) {
+            <div class="info-item"><b>✅ Retirado por:</b> {{ e.retiradoPor }}</div>
+          }
+          @if (e.dataRetirada) {
+            <div class="info-item"><b>📆 Data retirada:</b> {{ e.dataRetirada }}</div>
+          }
+        </div>
+      </div>
+    } @empty {
+      <div class="empty-state">
+        <h2>Nenhum item no histórico.</h2>
+        <p>As entregas retiradas aparecerão aqui.</p>
+      </div>
+    }
+  </div>
+</div>

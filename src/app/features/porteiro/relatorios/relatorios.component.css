@@ -1,0 +1,10 @@
+.page { padding: 28px; max-width: 1200px; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px; flex-wrap: wrap; gap: 10px; }
+.page-header h1 { font-size: 24px; color: #0d2e82; margin: 0; }
+.atualizacao { font-size: 13px; color: #64748b; }
+.graficos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.grafico-card { background: #fff; border-radius: 16px; padding: 22px; box-shadow: 0 3px 10px rgba(0,0,0,0.07); }
+.grafico-card.wide { grid-column: 1 / -1; }
+.grafico-card h3 { font-size: 15px; color: #1e293b; margin: 0 0 16px; font-weight: 600; }
+.sem-dados { color: #94a3b8; font-size: 13px; text-align: center; padding: 30px 0; }
+@media (max-width: 700px) { .graficos-grid { grid-template-columns: 1fr; } .grafico-card.wide { grid-column: auto; } }

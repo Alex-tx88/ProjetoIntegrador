@@ -1,0 +1,35 @@
+<div class="entrega-card">
+  <div class="entrega-header">
+    <div class="entrega-info">
+      <h3>{{ entrega.tipo }}</h3>
+      <p class="ent-desc">{{ entrega.desc }}</p>
+    </div>
+    <span class="status" [ngClass]="entrega.status">{{ entrega.status }}</span>
+  </div>
+
+  <div class="entrega-body">
+    <div class="ent-item"><b>Apartamento: {{ entrega.apto }}</b></div>
+    <div class="ent-item"><b>Morador: {{ entrega.morador }}</b></div>
+    <div class="ent-item">Data: {{ entrega.data }}</div>
+    <div class="ent-item remetente">Remetente: {{ entrega.remetente }}</div>
+    <div class="ent-item registrado">📋 Registrado por: {{ entrega.registradoPor }}</div>
+    @if (entrega.retiradoPor) {
+      <div class="ent-item">✅ Retirado por: {{ entrega.retiradoPor }}</div>
+    }
+    @if (entrega.dataRetirada) {
+      <div class="ent-item">📆 Data retirada: {{ entrega.dataRetirada }}</div>
+    }
+  </div>
+
+  @if (!modoMorador) {
+    @if (entrega.status === 'pendente') {
+      <button class="btn btn-azul" (click)="notificar()">Notificar Morador</button>
+    }
+    @if (entrega.status === 'notificado') {
+      <button class="btn btn-verde" (click)="retirar()">Marcar como Retirado</button>
+    }
+  }
+  @if (modoMorador && entrega.status === 'notificado') {
+    <button class="btn btn-verde" (click)="retirar()">✅ Confirmar Retirada</button>
+  }
+</div>

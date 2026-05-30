@@ -1,0 +1,36 @@
+<aside class="sidebar" [class.colapsado]="colapsado()">
+  <div class="sidebar-header">
+    <span class="logo" *ngIf="!colapsado()">🏢 Porteiro</span>
+    <button class="hamburger" (click)="toggle()" [title]="colapsado() ? 'Expandir' : 'Recolher'">
+      {{ colapsado() ? '☰' : '✕' }}
+    </button>
+  </div>
+
+  <div class="user-info" *ngIf="!colapsado()">
+    <div class="avatar">{{ auth.usuario()?.nome?.[0] }}</div>
+    <div>
+      <div class="nome">{{ auth.usuario()?.nome }}</div>
+      <div class="perfil-badge">{{ auth.isPorteiro() ? 'Porteiro' : 'Morador · Apto ' + auth.usuario()?.apto }}</div>
+    </div>
+  </div>
+
+  <nav class="nav-menu">
+    <a
+      *ngFor="let item of menu"
+      [routerLink]="item.rota"
+      routerLinkActive="ativo"
+      class="nav-item"
+      [title]="item.label"
+    >
+      <span class="nav-icon">{{ item.icon }}</span>
+      <span class="nav-label" *ngIf="!colapsado()">{{ item.label }}</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button class="nav-item sair" (click)="sair()" title="Sair">
+      <span class="nav-icon">🚪</span>
+      <span class="nav-label" *ngIf="!colapsado()">Sair</span>
+    </button>
+  </div>
+</aside>

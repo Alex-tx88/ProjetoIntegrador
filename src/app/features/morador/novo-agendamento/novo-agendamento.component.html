@@ -1,0 +1,35 @@
+<div class="page">
+  <h1>Novo Agendamento</h1>
+
+  <div class="card-form">
+    <div class="form-group">
+      <label>Serviço *</label>
+      <select [ngModel]="servico()" (ngModelChange)="servico.set($event)">
+        @for (s of servicos; track s) {
+          <option [value]="s">{{ s }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Data * (mínimo: amanhã)</label>
+      <input type="date" [min]="minData" [ngModel]="data()" (ngModelChange)="data.set($event)">
+    </div>
+
+    <div class="form-group">
+      <label>Horário de início</label>
+      <select [ngModel]="horarioInicio()" (ngModelChange)="horarioInicio.set($event)">
+        @for (h of horarios; track h) {
+          <option [value]="h">{{ h }}</option>
+        }
+      </select>
+    </div>
+
+    <p class="horario-fim">Término previsto: <strong>{{ horarioFim(horarioInicio()) }}</strong></p>
+
+    @if (erro())   { <p class="alerta-erro">{{ erro() }}</p> }
+    @if (sucesso()) { <p class="alerta-ok">{{ sucesso() }}</p> }
+
+    <button class="btn-agendar" (click)="submit()">Confirmar Agendamento</button>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.page { padding: 28px; max-width: 960px; }
+.page h1 { font-size: 24px; color: #0d2e82; margin: 0 0 22px; }
+.section-title { font-size: 18px; color: #1e293b; margin: 28px 0 14px; }
+.card-form { background: #fff; border-radius: 14px; padding: 22px; box-shadow: 0 3px 10px rgba(0,0,0,0.07); margin-bottom: 28px; }
+.card-form h2 { font-size: 17px; color: #0d2e82; margin: 0 0 16px; }
+.form-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.form-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 160px; }
+.form-group label { font-size: 13px; color: #334155; font-weight: 600; }
+.form-group input,
+.form-group select { padding: 10px 12px; border: 1px solid #e0e8f0; border-radius: 8px; font-size: 14px; outline: none; }
+.form-group input:focus,
+.form-group select:focus { border-color: #0d2e82; }
+.erro { color: #dc2626; font-size: 13px; margin: 8px 0 0; }
+.btn-registrar { margin-top: 14px; padding: 10px 22px; background: linear-gradient(90deg, #0d2e82, #1a3bb8); color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: opacity 0.18s, transform 0.15s; }
+.btn-registrar:hover { opacity: 0.9; transform: translateY(-1px); }
+.lista { display: flex; flex-direction: column; gap: 12px; }
+.chave-card { background: #fff; border-radius: 12px; padding: 16px 18px; border: 1px solid #e8edf5; box-shadow: 0 2px 6px rgba(0,0,0,0.06); transition: transform 0.18s; }
+.chave-card:hover { transform: translateY(-2px); }
+.chave-card.atrasada { border-color: #fca5a5; background: #fff7f7; }
+.chave-card.devolvida { opacity: 0.75; }
+.chave-topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.chave-nome { font-size: 15px; font-weight: 700; color: #1e293b; }
+.badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #dbeafe; color: #1d4ed8; }
+.badge-atrasada { background: #fee2e2; color: #991b1b; }
+.badge-devolvida { background: #f0fdf4; color: #15803d; }
+.chave-info { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: #475569; }
+.btn-devolver { margin-top: 10px; padding: 7px 14px; background: transparent; color: #0d2e82; border: 1px solid #0d2e82; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 13px; transition: background 0.18s; }
+.btn-devolver:hover { background: #eef2ff; }
+.empty-state { text-align: center; padding: 32px; border: 2px dashed #e2e8f0; border-radius: 12px; background: #fff; color: #64748b; }

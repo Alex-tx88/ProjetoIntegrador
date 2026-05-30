@@ -1,0 +1,39 @@
+<div class="calendario-mini">
+  <h3 class="titulo">📅 Próximos 7 dias</h3>
+
+  <div class="dias-grid">
+    @for (dia of dias; track dia.dataStr) {
+      <button
+        class="dia"
+        [class.tem-agendamento]="dia.temAgendamento"
+        [class.selecionado]="diaSelecionado() === dia.dataStr"
+        (click)="selecionarDia(dia)"
+      >
+        <span class="dia-semana">{{ dia.diaSemana }}</span>
+        <span class="dia-num">{{ dia.label }}</span>
+        @if (dia.temAgendamento) {
+          <span class="dot"></span>
+        }
+      </button>
+    }
+  </div>
+
+  @if (diaSelecionado()) {
+    <div class="agendamentos-dia">
+      <div class="ag-header">
+        <span>Agendamentos do dia</span>
+        <button class="fechar" (click)="fechar()">✕</button>
+      </div>
+      @if (agendamentosDoDia().length === 0) {
+        <p class="vazio">Nenhum agendamento ativo.</p>
+      }
+      @for (ag of agendamentosDoDia(); track ag.id) {
+        <div class="ag-item">
+          <strong>{{ ag.servico }}</strong>
+          <span>{{ ag.horarioInicio }} – {{ ag.horarioFim }}</span>
+          <span class="ag-morador">Apto {{ ag.moradorApto }} · {{ ag.moradorNome }}</span>
+        </div>
+      }
+    </div>
+  }
+</div>

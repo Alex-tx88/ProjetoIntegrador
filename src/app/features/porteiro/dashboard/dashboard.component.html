@@ -1,0 +1,48 @@
+<div class="page">
+  <div class="page-header">
+    <h1>Painel de Entregas</h1>
+    <button class="btn-nova-entrega" (click)="isModalOpen.set(true)">+ Nova Entrega</button>
+  </div>
+
+  <!-- Cards -->
+  <div class="dashboard-cards">
+    <div class="card"><h2>{{ totalEntregas }}</h2><p>Total de Entregas</p></div>
+    <div class="card card-warn"><h2>{{ totalPendentes }}</h2><p>Pendentes</p></div>
+    <div class="card card-info"><h2>{{ totalNotificados }}</h2><p>Notificados</p></div>
+    <div class="card card-ok"><h2>{{ totalRetirados }}</h2><p>Retirados</p></div>
+  </div>
+
+  <!-- Mini Calendário -->
+  <div class="calendario-wrapper">
+    <app-calendario-mini></app-calendario-mini>
+  </div>
+
+  <!-- Filtros -->
+  <div class="filters">
+    <input type="text" [(ngModel)]="filtroNome"   placeholder="Buscar por morador ou descrição...">
+    <select [(ngModel)]="filtroStatus">
+      <option value="">Todos os Status</option>
+      <option value="pendente">Pendente</option>
+      <option value="notificado">Notificado</option>
+    </select>
+    <input type="text" [(ngModel)]="filtroApto" placeholder="Filtrar por apartamento...">
+  </div>
+
+  <!-- Lista -->
+  <div class="entregas">
+    @for (entrega of entregasFiltradas; track entrega.id) {
+      <app-entrega-card [entrega]="entrega" (statusChange)="handleStatusChange($event)"></app-entrega-card>
+    } @empty {
+      <div class="empty-state">
+        <h2>Nenhuma entrega encontrada.</h2>
+        <p>Use os filtros ou adicione uma nova entrega.</p>
+      </div>
+    }
+  </div>
+</div>
+
+<app-modal
+  [isOpen]="isModalOpen()"
+  (closeModal)="isModalOpen.set(false)"
+  (addEntrega)="handleNovaEntrega($event)">
+</app-modal>

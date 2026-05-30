@@ -1,0 +1,35 @@
+.entrega-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+  padding: 25px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+  border: 1px solid #f0f0f0;
+}
+.entrega-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  border-color: #0d2e82;
+}
+.entrega-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+.entrega-header h3 { margin: 0; font-size: 18px; font-weight: 700; color: #0d2e82; }
+.ent-desc { font-size: 13px; color: #566375; margin-top: 4px; }
+.entrega-body { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; font-size: 14px; color: #334155; }
+.ent-item b { color: #0d2e82; }
+.registrado { color: #7c3aed; font-size: 13px; }
+.status { padding: 5px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+.pendente   { background: #fff3cd; color: #856404; }
+.notificado { background: #cce5ff; color: #004085; }
+.retirado   { background: #d4edda; color: #155724; }
+.btn { display: inline-block; margin-top: 14px; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 14px; transition: transform 0.16s, box-shadow 0.16s; }
+.btn-azul  { background: #007bff; color: #fff; }
+.btn-verde { background: #28a745; color: #fff; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }

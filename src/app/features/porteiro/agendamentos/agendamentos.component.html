@@ -1,0 +1,27 @@
+<div class="page">
+  <h1>Agendamentos</h1>
+  <p class="sub">Visualização de todos os agendamentos ativos dos moradores.</p>
+
+  @if (agendamentos.length === 0) {
+    <div class="empty-state">
+      <h2>Nenhum agendamento ativo.</h2>
+      <p>Os agendamentos dos moradores aparecerão aqui.</p>
+    </div>
+  } @else {
+    <div class="lista">
+      @for (ag of agendamentos; track ag.id) {
+        <div class="card-ag">
+          <div class="ag-topo">
+            <span class="servico">{{ ag.servico }}</span>
+            <span class="status-ativo">ativo</span>
+          </div>
+          <div class="ag-info">
+            <span>📅 {{ ag.data | date:'dd/MM/yyyy':'':'pt-BR' }}</span>
+            <span>⏰ {{ ag.horarioInicio }} – {{ ag.horarioFim }}</span>
+            <span>🏠 Apto {{ ag.moradorApto }} · {{ ag.moradorNome }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

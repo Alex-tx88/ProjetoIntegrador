@@ -1,0 +1,81 @@
+<div class="page">
+  <h1>Controle de Chaves</h1>
+
+  <!-- Registrar empréstimo -->
+  <div class="card-form">
+    <h2>🔑 Registrar Empréstimo</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Morador *</label>
+        <select [ngModel]="empMorador()" (ngModelChange)="empMorador.set($event)">
+          <option value="">Selecione o morador...</option>
+          @for (m of moradores; track m.apto) {
+            <option [value]="m.nome + '|' + m.apto">{{ m.nome }} — Apto {{ m.apto }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Chave</label>
+        <select [ngModel]="empChave()" (ngModelChange)="empChave.set($event)">
+          @for (c of chavesOpts; track c) {
+            <option [value]="c">{{ c }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    @if (empErro()) { <p class="erro">{{ empErro() }}</p> }
+    <button class="btn-registrar" (click)="registrarEmprestimo()">Registrar Empréstimo</button>
+  </div>
+
+  <!-- Chaves emprestadas agora -->
+  <h2 class="section-title">Chaves Emprestadas no Momento</h2>
+
+  @if (emprestadas.length === 0) {
+    <div class="empty-state"><p>Nenhuma chave emprestada no momento.</p></div>
+  } @else {
+    <div class="lista">
+      @for (c of emprestadas; track c.id) {
+        <div class="chave-card" [class.atrasada]="c.status === 'atrasada'">
+          <div class="chave-topo">
+            <span class="chave-nome">🔑 {{ c.chave }}</span>
+            <span class="badge" [class.badge-atrasada]="c.status === 'atrasada'">
+              {{ c.status === 'atrasada' ? '⚠️ Atrasada' : 'Emprestada' }}
+            </span>
+          </div>
+          <div class="chave-info">
+            <span>🏠 Apto {{ c.moradorApto }} · {{ c.moradorNome }}</span>
+            <span>📤 Retirada: {{ formatarData(c.dataRetirada) }}</span>
+            <span>👤 Entregou: {{ c.porteiroEntregou }}</span>
+          </div>
+          <button class="btn-devolver" (click)="registrarDevolucao(c.id)">Registrar Devolução</button>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Histórico -->
+  <h2 class="section-title">Histórico Completo</h2>
+  <div class="lista">
+    @for (c of chaves; track c.id) {
+      <div class="chave-card" [class.atrasada]="c.status === 'atrasada'" [class.devolvida]="c.status === 'devolvida'">
+        <div class="chave-topo">
+          <span class="chave-nome">🔑 {{ c.chave }}</span>
+          <span class="badge"
+            [class.badge-atrasada]="c.status === 'atrasada'"
+            [class.badge-devolvida]="c.status === 'devolvida'">
+            {{ c.status }}
+          </span>
+        </div>
+        <div class="chave-info">
+          <span>🏠 Apto {{ c.moradorApto }} · {{ c.moradorNome }}</span>
+          <span>📤 Retirada: {{ formatarData(c.dataRetirada) }}</span>
+          @if (c.dataDevolucao) {
+            <span>📥 Devolvida: {{ formatarData(c.dataDevolucao) }}</span>
+          }
+        </div>
+      </div>
+    } @empty {
+      <div class="empty-state"><p>Nenhum registro de chaves ainda.</p></div>
+    }
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="main">
+  <div class="container">
+    <div class="brand">🏢</div>
+    <h2>Porteiro Digital</h2>
+    <p class="sub">Faça login para continuar</p>
+
+    <form (ngSubmit)="onSubmit()">
+      <input type="email"    placeholder="E-mail"  [(ngModel)]="email" name="email" autocomplete="email">
+      <input type="password" placeholder="Senha"   [(ngModel)]="senha" name="senha" autocomplete="current-password">
+      <button type="submit" class="btn">Entrar</button>
+      @if (erro()) {
+        <div class="alerta">{{ erro() }}</div>
+      }
+    </form>
+
+    <div class="dicas">
+      <p>Contas disponíveis:</p>
+      <div class="conta" (click)="email='porteiro@condominio.com'; senha='123456'">
+        <span class="conta-perfil porteiro">Porteiro</span>
+        <span class="conta-nome">João Paulo</span>
+        <span class="conta-email">porteiro&#64;condominio.com</span>
+      </div>
+      <div class="conta" (click)="email='morador101@condominio.com'; senha='123456'">
+        <span class="conta-perfil morador">Morador</span>
+        <span class="conta-nome">Daniele · Apto 101</span>
+        <span class="conta-email">morador101&#64;condominio.com</span>
+      </div>
+      <div class="conta" (click)="email='morador205@condominio.com'; senha='123456'">
+        <span class="conta-perfil morador">Morador</span>
+        <span class="conta-nome">Enoque · Apto 205</span>
+        <span class="conta-email">morador205&#64;condominio.com</span>
+      </div>
+      <span class="senha-hint">🔑 Senha de todas: <strong>123456</strong> — clique para preencher</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+@if (isOpen) {
+  <div class="modal-overlay" (click)="onClose()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Registrar Nova Entrega</h2>
+        <p>Preencha os dados da entrega com atenção</p>
+        <button class="close-btn" (click)="onClose()" aria-label="Fechar">&times;</button>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <!-- Seleção de morador com busca -->
+        <div class="form-section">
+          <h3>Destinatário</h3>
+          <div class="form-group morador-search-wrap">
+            <label>Morador *</label>
+            <div class="search-box">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Digite o nome ou apto..."
+                [value]="termoBusca()"
+                (input)="onBuscaInput($any($event.target).value)"
+                (focus)="dropdownAberto.set(true)"
+                (blur)="fecharDropdown()"
+                autocomplete="off"
+              >
+              <span class="search-icon">🔍</span>
+            </div>
+
+            @if (dropdownAberto() && sugestoes().length > 0) {
+              <ul class="dropdown">
+                @for (m of sugestoes(); track m.apto) {
+                  <li class="dropdown-item" (mousedown)="selecionarMorador(m)">
+                    <span class="m-nome">{{ m.nome }}</span>
+                    <span class="m-apto">Apto {{ m.apto }}</span>
+                  </li>
+                }
+              </ul>
+            }
+
+            @if (moradorSelecionado()) {
+              <div class="morador-badge">
+                ✅ <strong>{{ moradorSelecionado()!.nome }}</strong> · Apto {{ moradorSelecionado()!.apto }}
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Detalhes da entrega -->
+        <div class="form-section">
+          <h3>Detalhes da Entrega</h3>
+          <div class="delivery-type">
+            <button type="button" class="tipo" [class.ativo]="form.get('tipo')?.value === 'Encomenda'"       (click)="selecionarTipo('Encomenda')">📦 Encomenda</button>
+            <button type="button" class="tipo" [class.ativo]="form.get('tipo')?.value === 'Correspondência'" (click)="selecionarTipo('Correspondência')">✉️ Correspondência</button>
+            <button type="button" class="tipo" [class.ativo]="form.get('tipo')?.value === 'Medicamento'"     (click)="selecionarTipo('Medicamento')">💊 Medicamento</button>
+            <button type="button" class="tipo" [class.ativo]="form.get('tipo')?.value === 'Alimentação'"     (click)="selecionarTipo('Alimentação')">🍔 Alimentação</button>
+            <button type="button" class="tipo" [class.ativo]="form.get('tipo')?.value === 'Documento'"       (click)="selecionarTipo('Documento')">📄 Documento</button>
+          </div>
+
+          <div class="form-group">
+            <label>Remetente/Empresa *</label>
+            <input formControlName="remetente" type="text" placeholder="Ex: Amazon, Correios, iFood">
+          </div>
+          <div class="form-group">
+            <label>Descrição *</label>
+            <input formControlName="desc" type="text" placeholder="Ex: Caixa pequena, Envelope, Sacola">
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Observações</h3>
+          <textarea formControlName="obs" placeholder="Frágil, urgente, refrigerado..."></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="cancelar" (click)="onClose()">Cancelar</button>
+          <button type="submit" class="confirmar">Registrar Entrega</button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

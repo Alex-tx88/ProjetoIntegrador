@@ -1,0 +1,103 @@
+.calendario-mini {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+}
+
+.titulo {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0d2e82;
+  margin: 0 0 14px;
+}
+
+.dias-grid {
+  display: flex;
+  gap: 6px;
+}
+
+.dia {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 4px;
+  border-radius: 10px;
+  border: 1px solid #e8edf5;
+  background: #f8faff;
+  cursor: pointer;
+  transition: all 0.18s;
+  position: relative;
+}
+
+.dia:hover { background: #eef2ff; border-color: #b4c6fb; }
+
+.dia.selecionado { background: #0d2e82; border-color: #0d2e82; color: #fff; }
+.dia.selecionado .dia-semana,
+.dia.selecionado .dia-num { color: #fff; }
+
+.dia.tem-agendamento { border-color: #6b8cff; }
+
+.dia-semana { font-size: 10px; color: #888; text-transform: uppercase; }
+.dia-num    { font-size: 16px; font-weight: 700; color: #1e293b; }
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4f46e5;
+}
+.dia.selecionado .dot { background: #fff; }
+
+/* Painel de agendamentos */
+.agendamentos-dia {
+  margin-top: 14px;
+  background: #f8faff;
+  border-radius: 10px;
+  border: 1px solid #e0e8ff;
+  overflow: hidden;
+}
+
+.ag-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #eef2ff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0d2e82;
+}
+
+.fechar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #888;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.fechar:hover { background: rgba(0,0,0,0.06); }
+
+.vazio {
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+}
+
+.ag-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border-top: 1px solid #e8edf5;
+  font-size: 13px;
+}
+
+.ag-item strong { color: #1e293b; }
+.ag-item span   { color: #475569; }
+.ag-morador     { font-size: 11px; color: #888; }

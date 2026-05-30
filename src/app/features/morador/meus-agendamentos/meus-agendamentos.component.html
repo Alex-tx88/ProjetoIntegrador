@@ -1,0 +1,28 @@
+<div class="page">
+  <h1>Meus Agendamentos</h1>
+
+  @if (agendamentos().length === 0) {
+    <div class="empty-state">
+      <h2>Nenhum agendamento encontrado.</h2>
+      <p>Crie um novo agendamento pelo menu.</p>
+    </div>
+  } @else {
+    <div class="lista">
+      @for (ag of agendamentos(); track ag.id) {
+        <div class="card-ag">
+          <div class="ag-topo">
+            <span class="servico">{{ ag.servico }}</span>
+            <span [class]="ag.status === 'ativo' ? 'status-ativo' : 'status-cancelado'">{{ ag.status }}</span>
+          </div>
+          <div class="ag-info">
+            <span>📅 {{ ag.data }}</span>
+            <span>⏰ {{ ag.horarioInicio }} – {{ ag.horarioFim }}</span>
+          </div>
+          @if (ag.status === 'ativo') {
+            <button class="btn-cancelar" (click)="cancelar(ag.id)">Cancelar</button>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

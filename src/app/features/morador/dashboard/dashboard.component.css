@@ -1,0 +1,14 @@
+.page { padding: 28px; max-width: 900px; }
+.page h1 { font-size: 24px; color: #0d2e82; margin: 0 0 22px; }
+.section-title { font-size: 18px; color: #1e293b; margin: 24px 0 16px; }
+.dashboard-cards { display: flex; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+.card { flex: 1; min-width: 130px; background: #fff; border-radius: 14px; padding: 20px; text-align: center; box-shadow: 0 3px 8px rgba(0,0,0,0.07); border-top: 4px solid #0d2e82; transition: transform 0.18s; }
+.card:hover { transform: translateY(-3px); }
+.card h2 { font-size: 30px; margin: 0; color: #0d2e82; }
+.card p  { font-size: 13px; color: #666; margin: 6px 0 0; }
+.card-warn { border-top-color: #f59e0b; } .card-warn h2 { color: #b45309; }
+.card-info { border-top-color: #3b82f6; } .card-info h2 { color: #1d4ed8; }
+.card-ok   { border-top-color: #10b981; } .card-ok h2 { color: #047857; }
+.empty-state { text-align: center; padding: 48px; border: 2px dashed #e2e8f0; border-radius: 14px; background: #fff; }
+.empty-state h2 { color: #1e293b; }
+.empty-state p  { color: #64748b; }
